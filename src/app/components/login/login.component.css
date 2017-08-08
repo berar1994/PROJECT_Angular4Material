@@ -1,0 +1,60 @@
+#wrapper{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/telegram.jpg');
+    background-size: 100% 100%;
+} 
+
+
+#loginCard{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#loginCardFooter{
+    height: 50px;
+}
+
+
+#loginCardProgressBar{
+    position: absolute;
+    bottom: 0;
+}
+
+#signUpButton{
+    float: right;
+    margin-right: 15px;
+    background-color: #2196F3;
+}
+
+
+#loginFormWrapper{
+    width: 80%;
+    margin: auto;
+}
+
+#loginForm md-input-container{
+    margin-top: 20px;
+}
+
+#loginFormActions{
+    width: 100%;
+    margin-top: 25px;
+}
+
+#loginButton{
+    width: 150px;
+    background-color: #2196F3;
+    color: #FFFFFF;
+}

@@ -1,0 +1,47 @@
+<div id="wrapper">
+  <md-card id="loginCard">
+    <!-- Card header -->
+    <md-card-header>
+      <md-card-title>LOGIN</md-card-title>
+    </md-card-header>
+
+    <!-- Card content -->
+    <md-card-content>
+      <div id="loginFormWrapper">
+        <form id="loginForm">
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Email" [formControl]="emailFormControl">
+            <md-icon mdSuffix>mail_outline</md-icon>
+            <md-error *ngIf="emailFormControl.hasError('pattern')">
+              {{emailErrorMessageInvalid}}
+            </md-error>
+            <md-error *ngIf="emailFormControl.hasError('required')">
+              {{emailErrorMessageRequired}}
+            </md-error>
+          </md-input-container>
+
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Password" type="password" [formControl]="passwordFormControl">
+            <md-icon mdSuffix>lock_outline</md-icon>
+            <md-error *ngIf="passwordFormControl.hasError('required')">
+              {{passwordErrorMessageRequired}}
+            </md-error>
+          </md-input-container>
+
+          <div id="loginFormActions">
+            <button md-raised-button id="loginButton">Submit</button>
+            <a routerLink="#" class="float-right font-size-12">Forgot password</a>
+            <hr style="border: 1px dashed #E0E0E0;">
+            <md-checkbox>Remember me</md-checkbox>
+          </div>
+        </form>
+      </div>
+    </md-card-content>
+
+    <!-- Card footer -->
+    <md-card-footer id="loginCardFooter">
+      <button md-mini-fab id="signUpButton" mdTooltip="Sign up" [mdTooltipPosition]="tooltipPosition"><md-icon>add</md-icon></button>
+      <md-progress-bar *ngIf=showProgressBar id="loginCardProgressBar" color='primary' mode="indeterminate"></md-progress-bar>
+    </md-card-footer>
+  </md-card>
+</div>
