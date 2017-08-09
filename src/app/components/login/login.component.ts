@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -12,21 +12,22 @@ export class LoginComponent implements OnInit {
 
   showProgressBar: boolean = false;
   tooltipPosition: string = "above";
-  emailFormControl: FormControl;
-  passwordFormControl: FormControl;
-  emailErrorMessageRequired: string = "Email is required";
+
+  formGroup: FormGroup;
   emailErrorMessageInvalid: string = "Please enter a valid email address";
   passwordErrorMessageRequired: string = "Password is required";
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.formGroup = formBuilder.group({
+      'email': [null, Validators.compose([Validators.required, Validators.pattern(EMAIL_REGEX)])],
+      'password': [null, Validators.required]
+    });
+  }
 
-  ngOnInit() {
-    this.emailFormControl = new FormControl('', [
-      Validators.required,
-      Validators.pattern(EMAIL_REGEX)]);
+  ngOnInit() { }
 
-    this.passwordFormControl = new FormControl('', [
-      Validators.required]);
+  public login(email, password) {
+    console.log('Email: ' + email + ', Password: ' + password);
   }
 
 }

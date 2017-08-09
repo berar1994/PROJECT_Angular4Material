@@ -8,28 +8,25 @@
     <!-- Card content -->
     <md-card-content>
       <div id="loginFormWrapper">
-        <form id="loginForm">
+        <form id="loginForm" [formGroup]="formGroup" (submit)="login(email.value, password.value)">
           <md-input-container class="full-width">
-            <input mdInput placeholder="Email" [formControl]="emailFormControl">
+            <input mdInput placeholder="Email" formControlName="email" #email>
             <md-icon mdSuffix>mail_outline</md-icon>
-            <md-error *ngIf="emailFormControl.hasError('pattern')">
+            <md-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
               {{emailErrorMessageInvalid}}
-            </md-error>
-            <md-error *ngIf="emailFormControl.hasError('required')">
-              {{emailErrorMessageRequired}}
             </md-error>
           </md-input-container>
 
           <md-input-container class="full-width">
-            <input mdInput placeholder="Password" type="password" [formControl]="passwordFormControl">
+            <input mdInput placeholder="Password" type="password" formControlName="password" #password>
             <md-icon mdSuffix>lock_outline</md-icon>
-            <md-error *ngIf="passwordFormControl.hasError('required')">
+            <md-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
               {{passwordErrorMessageRequired}}
             </md-error>
           </md-input-container>
 
           <div id="loginFormActions">
-            <button md-raised-button id="loginButton">Submit</button>
+            <button md-raised-button id="loginButton" [disabled]="!formGroup.valid">Submit</button>
             <a routerLink="#" class="float-right font-size-12">Forgot password</a>
             <hr style="border: 1px dashed #E0E0E0;">
             <md-checkbox>Remember me</md-checkbox>

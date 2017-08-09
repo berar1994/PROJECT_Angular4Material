@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdTabsModule, MdProgressBarModule, MdTooltipModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdCheckboxModule } from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import 'hammerjs';
 
