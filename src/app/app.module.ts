@@ -23,11 +23,15 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { DataService } from './services/data.service';
+import { AuthService } from './services/auth/auth.service';
+import { LocalstorageService } from './services/local.storage/localstorage.service';
+
+import { AuthorizeGuard } from './services/guards/authorize.guard';
 
 // Routes for app
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthorizeGuard]},
 ];
 
 
@@ -57,7 +61,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService],
+  providers: [DataService, AuthorizeGuard, AuthService, LocalstorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
