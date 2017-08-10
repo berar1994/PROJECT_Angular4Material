@@ -8,7 +8,6 @@ export class LocalstorageService {
   constructor() { }
 
   store(key:string, value:any){
-    console.log(key + '  ' + value);
     localStorage.setItem(key, value);
   }
 

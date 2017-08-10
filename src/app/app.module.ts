@@ -15,19 +15,27 @@ import { MdInputModule } from '@angular/material';
 import { MdCheckboxModule } from '@angular/material';
 import { MdSnackBarModule } from '@angular/material';
 import { MdListModule } from '@angular/material';
+import { MdDialogModule } from '@angular/material';
+import { MdProgressSpinnerModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import 'hammerjs';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { PasswordComponent } from './components/dialog/password/password.component';
+import { ErrorPageComponent } from './components/error.page/error.page.component';
 
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth/auth.service';
 import { LocalstorageService } from './services/local.storage/localstorage.service';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AuthorizeGuard } from './services/guards/authorize.guard';
-import { ErrorPageComponent } from './components/error.page/error.page.component';
+
+
+
+
 
 // Routes for app
 const appRoutes: Routes = [
@@ -43,7 +51,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -61,11 +70,14 @@ const appRoutes: Routes = [
     MdCheckboxModule,
     MdSnackBarModule,
     MdListModule,
+    MdDialogModule,
+    MdProgressSpinnerModule,
     FormsModule, 
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService, AuthorizeGuard, AuthService, LocalstorageService],
-  bootstrap: [AppComponent]
+  providers: [DataService, AuthorizeGuard, AuthService, LocalstorageService, CookieService ],
+  bootstrap: [AppComponent],
+  entryComponents: [PasswordComponent]
 })
 export class AppModule { }

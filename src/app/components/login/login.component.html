@@ -27,11 +27,12 @@
 
           <div id="loginFormActions">
             <button md-raised-button id="loginButton" [disabled]="!formGroup.valid">Submit</button>
-            <a routerLink="#" class="float-right font-size-12">Forgot password</a>
-            <hr style="border: 1px dashed #E0E0E0;">
-            <md-checkbox>Remember me</md-checkbox>
           </div>
         </form>
+        <hr style="border: 1px dashed #E0E0E0;">
+        <!-- <a (click)="openRecoverPasswordDialog()" class="float-right font-size-12">Forgot password</a> -->
+        <button md-button (click)="openRecoverPasswordDialog()" class="float-right font-size-12">Forgot password</button>
+        <md-checkbox [(ngModel)]="rememberMe">Remember me</md-checkbox>
       </div>
     </md-card-content>
 
