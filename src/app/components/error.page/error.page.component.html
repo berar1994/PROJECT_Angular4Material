@@ -1,0 +1,14 @@
+<button md-button [routerLink]="['/home']"><md-icon mdSuffix>arrow_back</md-icon> BACK</button>
+
+<md-card id="errorCard">
+  <md-card-header>
+    <div md-card-avatar><md-icon id="errorIcon">error_outline</md-icon></div>
+    <md-card-title>{{errorTitle}}</md-card-title>
+    <md-card-subtitle>Error {{errorType}}</md-card-subtitle>
+  </md-card-header>
+
+  <md-card-content>
+     <h3><strong>CAUSE</strong></h3>
+     <p><i>{{errorCause}}</i></p>
+  </md-card-content>
+</md-card>

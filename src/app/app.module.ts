@@ -27,11 +27,14 @@ import { AuthService } from './services/auth/auth.service';
 import { LocalstorageService } from './services/local.storage/localstorage.service';
 
 import { AuthorizeGuard } from './services/guards/authorize.guard';
+import { ErrorPageComponent } from './components/error.page/error.page.component';
 
 // Routes for app
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthorizeGuard]},
+  {path: 'error', component: ErrorPageComponent},
+  {path: '**', redirectTo: '/error'}
 ];
 
 
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

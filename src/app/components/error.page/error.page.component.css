@@ -1,0 +1,9 @@
+#errorCard{
+    width: 400px;
+    left: 100px;
+    top: 50px;
+}
+
+#errorIcon{
+   color: #B71C1C;
+}
