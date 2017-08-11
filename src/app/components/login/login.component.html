@@ -10,7 +10,7 @@
       <div id="loginFormWrapper">
         <form id="loginForm" [formGroup]="formGroup" (submit)="login(email.value, password.value)">
           <md-input-container class="full-width">
-            <input mdInput placeholder="Email" formControlName="email" #email>
+            <input mdInput placeholder="Email" formControlName="email" #email [(ngModel)]="emailInput">
             <md-icon mdSuffix>mail_outline</md-icon>
             <md-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
               {{emailErrorMessageInvalid}}
@@ -18,7 +18,7 @@
           </md-input-container>
 
           <md-input-container class="full-width">
-            <input mdInput placeholder="Password" type="password" formControlName="password" #password>
+            <input mdInput placeholder="Password" type="password" formControlName="password" #password [(ngModel)]="passwordInput">
             <md-icon mdSuffix>lock_outline</md-icon>
             <md-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
               {{passwordErrorMessageRequired}}

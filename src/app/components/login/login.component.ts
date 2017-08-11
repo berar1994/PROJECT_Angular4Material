@@ -11,6 +11,7 @@ import { PasswordComponent } from '../dialog/password/password.component';
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const EMAIL = "test@test.com";
 const PASSWORD = "123";
+const REMEMBER_ME_COOKIE_KEY = "rememberMe";
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
   emailErrorMessageInvalid: string = "Please enter a valid email address";
   passwordErrorMessageRequired: string = "Password is required";
   rememberMe: boolean = false;
-
+  emailInput: string = "";
+  passwordInput: string = "";
 
 
   constructor(private formBuilder: FormBuilder, private snackBar: MdSnackBar,
@@ -39,8 +41,19 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Storage cleared');
     this.localstorageService.clear();
+
+    let rememberMeCookieValue:boolean =  (this.cookieService.get(REMEMBER_ME_COOKIE_KEY) === 'true');
+    // check if remember me was selected
+    if (rememberMeCookieValue) {
+      this.emailInput = EMAIL;
+      this.passwordInput = PASSWORD;
+      this.rememberMe = true;
+    } else {
+      this.emailInput = "";
+      this.passwordInput = "";
+      this.rememberMe = false;
+    }
   }
 
 
@@ -53,8 +66,9 @@ export class LoginComponent implements OnInit {
 
         // save cookie if remember me is checked
         if (this.rememberMe) {
-          console.log('set cookie');
-          this.cookieService.set('rememberMe', 'true');
+          this.cookieService.set(REMEMBER_ME_COOKIE_KEY, 'true');
+        }else{
+          this.cookieService.set(REMEMBER_ME_COOKIE_KEY, 'false');
         }
 
         this.router.navigate(['/home']);
