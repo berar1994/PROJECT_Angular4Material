@@ -1,0 +1,52 @@
+<div id="wrapper">
+  <md-card id="signupCard">
+    <!-- Card header -->
+    <md-card-header>
+      <md-card-title>SIGN UP</md-card-title>
+    </md-card-header>
+
+    <!-- Card content -->
+    <md-card-content>
+      <div id="signupFormWrapper">
+        <form id="signupForm" [formGroup]="formGroup" (submit)="signUp(email.value, password.value, name.value)">
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Email" formControlName="email" #email>
+            <md-icon mdSuffix>mail_outline</md-icon>
+            <md-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+              {{emailErrorMessageInvalid}}
+            </md-error>
+          </md-input-container>
+
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Password" type="password" formControlName="password" #password>
+            <md-icon mdSuffix>lock_outline</md-icon>
+            <md-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
+              {{passwordErrorMessageRequired}}
+            </md-error>
+          </md-input-container>
+
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Name" formControlName="name" #name>
+            <md-icon mdSuffix>perm_identity</md-icon>
+            <md-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+              {{nameErrorMessageRequired}}
+            </md-error>
+          </md-input-container>
+
+          <div id="signupFormActions">
+            <button md-raised-button id="signupButton" [disabled]="!formGroup.valid">Submit</button>
+          </div>
+        </form>
+        <hr style="border: 1px dashed #E0E0E0;">
+        <div style="text-align:center;">
+          Already have an account ? <a [routerLink]="['/login']">Login</a>
+        </div>
+      </div>
+    </md-card-content>
+
+    <!-- Card footer -->
+    <md-card-footer>
+      <md-progress-bar *ngIf=showProgressBar id="signupCardProgressBar" color='primary' mode="indeterminate"></md-progress-bar>
+    </md-card-footer>
+  </md-card>
+</div>

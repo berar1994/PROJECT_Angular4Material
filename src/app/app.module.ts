@@ -32,6 +32,7 @@ import { LocalstorageService } from './services/local.storage/localstorage.servi
 import { CookieService } from 'ngx-cookie-service';
 
 import { AuthorizeGuard } from './services/guards/authorize.guard';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 
@@ -41,6 +42,7 @@ import { AuthorizeGuard } from './services/guards/authorize.guard';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthorizeGuard]},
+  {path: 'signup', component: SignupComponent},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: '/error'}
 ];
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     ErrorPageComponent,
-    PasswordComponent
+    PasswordComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

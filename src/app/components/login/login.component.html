@@ -30,15 +30,14 @@
           </div>
         </form>
         <hr style="border: 1px dashed #E0E0E0;">
-        <!-- <a (click)="openRecoverPasswordDialog()" class="float-right font-size-12">Forgot password</a> -->
-        <button md-button (click)="openRecoverPasswordDialog()" class="float-right font-size-12">Forgot password</button>
+        <a (click)="openRecoverPasswordDialog()" class="float-right font-size-12" style="margin-top: 6px;text-decoration: underline;cursor: pointer;color: blue;">Forgot password</a>
         <md-checkbox [(ngModel)]="rememberMe">Remember me</md-checkbox>
       </div>
     </md-card-content>
 
     <!-- Card footer -->
     <md-card-footer id="loginCardFooter">
-      <button md-mini-fab id="signUpButton" mdTooltip="Sign up" [mdTooltipPosition]="tooltipPosition"><md-icon>add</md-icon></button>
+      <button md-mini-fab id="signUpButton" mdTooltip="Sign up" [mdTooltipPosition]="tooltipPosition" [routerLink]="['/signup']"><md-icon>add</md-icon></button>
       <md-progress-bar *ngIf=showProgressBar id="loginCardProgressBar" color='primary' mode="indeterminate"></md-progress-bar>
     </md-card-footer>
   </md-card>
