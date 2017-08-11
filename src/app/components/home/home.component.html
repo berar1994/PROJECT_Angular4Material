@@ -1,6 +1,9 @@
 <md-card id="postsCard">
   <md-list>
     <h3 md-subheader><strong>{{numberOfPosts}}</strong> POSTS</h3>
+    <button md-raised-button id="logoutButton" (click)="logout()">
+      Logout <md-icon>keyboard_arrow_right</md-icon>
+    </button>
     <md-list-item *ngFor="let post of posts;">
       <md-icon md-list-icon>assignment</md-icon>
       <h4 md-line><strong>{{post.title | uppercase}}</strong></h4>
